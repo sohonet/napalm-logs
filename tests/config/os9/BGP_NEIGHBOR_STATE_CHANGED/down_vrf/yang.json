@@ -1,0 +1,35 @@
+{
+    "error": "BGP_NEIGHBOR_STATE_CHANGED",
+    "host": "router-1",
+    "ip": "127.0.0.1",
+    "timestamp": 1642672800,
+    "yang_message": {
+        "bgp": {
+            "neighbors": {
+                "neighbor": {
+                    "1.2.3.4": {
+                        "state": {
+                            "session-state-change-event": "closed. Neighbor shutdown by user",
+                            "session-state": "IDLE"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "message_details": {
+        "host": "router-1",
+        "date": "Jan 20",
+        "time": "10:00:00",
+        "timeZone": null,
+        "tag": "BGP-5-ADJCHANGE",
+        "pri": "189",
+        "message": "VRF VRF-1 Connection with neighbor 1.2.3.4 closed. Neighbor shutdown by user ",
+        "facility": 23,
+        "severity": 5
+    },
+    "yang_model": "openconfig-bgp",
+    "os": "os9",
+    "facility": 23,
+    "severity": 5
+}

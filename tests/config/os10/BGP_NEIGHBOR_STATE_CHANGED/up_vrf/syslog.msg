@@ -1,0 +1,1 @@
+<165>Jan 20 10:00:00 1.2.3.4 1 2025-09-01T14:56:21.751589+00:00 router-1 dn_alm 889 - - Node.1-Unit.1:PRI [event], Dell EMC (OS10) %BGP_NBR_NOTIFY_EST_STATE: BGP FSM established state change Notification State Changed to Established for nbr:1.2.3.4 in VRF:VRF-1
