@@ -1,0 +1,1 @@
+<189>Jan 20 10:00:00 router-1 %STKUNIT1-M:CP %BGP-5-ADJCHANGE: VRF VRF-1 Neighbor 1.2.3.4 Up

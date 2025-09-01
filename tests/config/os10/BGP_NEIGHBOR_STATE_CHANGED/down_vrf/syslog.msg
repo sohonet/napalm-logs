@@ -1,0 +1,1 @@
+<161>Jan 20 10:00:00 1.2.3.4 1 2025-09-01T14:28:21.515631+00:00 router-1 dn_alm 889 - - Node.1-Unit.1:PRI [event], Dell EMC (OS10) %BGP_NBR_BKWD_STATE_CHG: Backward state change occurred MISC ERR: Session closed for Nbr:1.2.3.4 VRF:VRF-1
