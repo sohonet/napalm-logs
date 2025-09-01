@@ -1,0 +1,10 @@
+# <187>Sep  1 13:13:52 router-1 %STKUNIT1-M:CP %SEC-3-LOGIN_FAILURE: Login failure on line vty1 ( 1.2.3.4 )
+prefixes:
+  - time_format: "%b %d %H:%M:%S"
+    values:
+      date: (\w+ +\d+)
+      time: (\d\d:\d\d:\d\d)
+      host: ([^ ]+)
+      processName: (\S+)
+      tag: (\S+)
+    line: '{date} {time} {host} %{processName} %{tag}: '

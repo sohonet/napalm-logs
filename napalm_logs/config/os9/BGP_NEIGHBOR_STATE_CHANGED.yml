@@ -13,12 +13,14 @@ messages:
         bgp//neighbors//neighbor//{peer}//state//session-state: ESTABLISHED
   - error: BGP_NEIGHBOR_STATE_CHANGED
     # %BGP-5-ADJCHANGE: VRF VRF-1 Session closed by neighbor 192.168.245.49 (Hold time expired) 
+    # %BGP-5-ADJCHANGE:  VRF VRF-1 Connection with neighbor 192.168.94.2 closed. Neighbor shutdown by user 
     tag: BGP-5-ADJCHANGE
     values:
       instance: ([\w-]+)
       peer: ([\w\d:\.]+)
       reason: (.*)
-    line: 'VRF {isntance} Session closed by neighbor {peer} {reason}'
+      event: (.*)
+    line: 'VRF {instance} {event} neighbor {peer} {reason}'
     model: openconfig-bgp
     mapping:
       variables:

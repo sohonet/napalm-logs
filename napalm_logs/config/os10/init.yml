@@ -1,0 +1,13 @@
+# <165>Sep  1 13:28:23 1.2.3.4 1 2025-09-01T13:28:23.300083+00:00 router-1 dn_alm 889 - - Node.1-Unit.1:PRI [event], Dell EMC (OS10) %IFM_OSTATE_DN: Interface operational state is down :ethernet1/1/8
+prefixes:
+  - time_format: "%b %d %H:%M:%S"
+    values:
+      date: (\w+ +\d+)
+      time: (\d\d:\d\d:\d\d)
+      host: ([^ ]+)
+      tag: (\S+)
+      hostPrefix: (\d+.\d+.\d+.\d+)
+      processId: (\d)
+      datetime: (\S+)
+      processName: (.*)
+    line: '{date} {time} {hostPrefix} {processId} {datetime} {host} {processName} %{tag}: '

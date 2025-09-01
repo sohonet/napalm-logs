@@ -18,7 +18,8 @@ messages:
       instance: ([\w-]+)
       peer: ([\w\d:\.]+)
       reason: (.*)
-    line: 'Backward state change occurred ADJCHANGE: {reason} for Nbr:{peer} VRF:{instance}'
+      event: (.*)
+    line: 'Backward state change occurred {event}: {reason} for Nbr:{peer} VRF:{instance}'
     model: openconfig-bgp
     mapping:
       variables:
