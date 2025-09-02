@@ -20,7 +20,7 @@ messages:
       peer: ([\w\d:\.]+)
       reason: (.*)
       event: (.*)
-    line: 'VRF {instance} {event} neighbor {peer} {reason}'
+    line: 'VRF {instance} {event} neighbor {peer}{reason}'
     model: openconfig-bgp
     mapping:
       variables:
