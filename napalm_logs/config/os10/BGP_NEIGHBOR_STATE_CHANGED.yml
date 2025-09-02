@@ -13,13 +13,13 @@ messages:
         bgp//neighbors//neighbor//{peer}//state//session-state: ESTABLISHED
   - error: BGP_NEIGHBOR_STATE_CHANGED
     # %BGP_NBR_BKWD_STATE_CHG: Backward state change occurred ADJCHANGE: Session down for Nbr:192.168.245.48 VRF:VRF-1
+    # %BGP_NBR_BKWD_STATE_CHG: Backward state change occurred Hold Time expired for Nbr:192.168.94.1 VRF:CHELSEA-TESTING
     tag: BGP_NBR_BKWD_STATE_CHG
     values:
       instance: ([\w-]+)
       peer: ([\w\d:\.]+)
       reason: (.*)
-      event: (.*)
-    line: 'Backward state change occurred {event}: {reason} for Nbr:{peer} VRF:{instance}'
+    line: 'Backward state change occurred {reason} for Nbr:{peer} VRF:{instance}'
     model: openconfig-bgp
     mapping:
       variables:
