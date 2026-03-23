@@ -52,6 +52,7 @@ class KafkaListener(ListenerBase):
                 request_timeout_ms=305000,    # 5 min 5 sec (must exceed session_timeout_ms)
                 session_timeout_ms=300000,    # 5 minutes
                 heartbeat_interval_ms=60000,  # 60 seconds (must be < session_timeout_ms / 3)
+                max_poll_records=100,         # smaller batches to avoid rebalance
             )
         except kafka.errors.NoBrokersAvailable as err:
             log.error(err, exc_info=True)
