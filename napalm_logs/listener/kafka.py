@@ -49,9 +49,9 @@ class KafkaListener(ListenerBase):
             self.consumer = kafka.KafkaConsumer(
                 bootstrap_servers=self.bootstrap_servers,
                 group_id=self.group_id,
-                max.poll.interval.ms: 900000,  # 15 minutes instead of 5
-                session.timeout.ms: 45000,     # 45 seconds
-                heartbeat.interval.ms: 15000,  # 15 seconds
+                max_poll_interval_ms=900000,  # 15 minutes instead of 5
+                session_timeout_ms=45000,     # 45 seconds
+                heartbeat_interval_ms=15000,  # 15 seconds
             )
         except kafka.errors.NoBrokersAvailable as err:
             log.error(err, exc_info=True)
