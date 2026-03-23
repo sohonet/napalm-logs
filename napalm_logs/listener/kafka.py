@@ -49,7 +49,7 @@ class KafkaListener(ListenerBase):
             self.consumer = kafka.KafkaConsumer(
                 bootstrap_servers=self.bootstrap_servers,
                 group_id=self.group_id,
-                max_poll_interval_ms=900000,  # 15 minutes instead of 5
+                request_timeout_ms=60000,     # 60 seconds
                 session_timeout_ms=45000,     # 45 seconds
                 heartbeat_interval_ms=15000,  # 15 seconds
             )
