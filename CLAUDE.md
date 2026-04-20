@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-napalm-logs is a Python library that parses network device syslog messages (from Junos, EOS, IOS-XR, NXOS, IOS, Dell OS9/OS10, Huawei, etc.) into structured OpenConfig/IETF YANG model objects, published via pluggable transports (ZMQ, Kafka, HTTP, etc.).
+napalm-logs is a Python library that parses network device syslog messages into structured, vendor-agnostic objects following OpenConfig/IETF YANG models. Supported vendors: Juniper (junos), Arista (eos), Cisco (ios, iosxr, nxos), Dell (os9, os10), Huawei (huawei), and Brocade (netiron). Output is published via pluggable transports (ZMQ, Kafka, HTTP, log).
 
 ## Commands
 
@@ -34,17 +34,17 @@ Linting runs automatically with pytest via `--pylama` (configured in `setup.cfg`
 
 Messages flow through a pipeline of separate OS processes connected by ZeroMQ IPC:
 
-1. **Listener** (`listener_proc.py`) — receives raw syslog (UDP/TCP/Kafka/ZMQ)
+1. **Listener** (`listener_proc.py` + `listener/`) — receives raw syslog (UDP/TCP/Kafka/ZMQ)
 2. **Server** (`server.py`) — routes messages to the correct device process by matching against each device OS's `init.yml` prefix patterns
 3. **Device** (`device.py`, one process per vendor OS) — parses message body with compiled regex, maps extracted values to YANG model paths
 4. **Publisher Proxy** (`pub_proxy.py`) — IPC fan-out from device processes to publishers
-5. **Publisher** (`publisher.py`, one per transport) — serializes and publishes structured output
+5. **Publisher** (`publisher.py` + `transport/`, one per transport) — serializes and publishes structured output
 
-`base.py:NapalmLogs` is the orchestrator that spawns and manages all these processes.
+`base.py:NapalmLogs` is the orchestrator that spawns and manages all these processes. `auth.py` provides an optional NaCl-based authenticator worker for clients. `ext/six.py` is the bundled Python 2/3 compatibility layer.
 
 ### Plugin System
 
-Four subsystems use a factory/lookup pattern: **listeners** (`listener/`), **transports** (`transport/`), **serializers** (`serializer/`), **buffers** (`buffer/`). Each has a `__init__.py` with a `LOOKUP` dict mapping names to classes/functions, and a `get_*()` factory function.
+Four subsystems use a factory/lookup pattern: **listeners** (`listener/`), **transports** (`transport/`), **serializers** (`serializer/`), **buffers** (`buffer/`). Each has an `__init__.py` with a `*_LOOKUP` dict mapping names to classes/functions, and a `get_*()` factory function.
 
 ### Device Configuration (YAML)
 
